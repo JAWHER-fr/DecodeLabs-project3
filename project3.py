@@ -1,7 +1,5 @@
-# ====================================================================
-# DecodeLabs AI Internship - Project 3: Content-Based Recommender
+
 # Student: Dridi Jawher
-# ====================================================================
 
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -47,14 +45,14 @@ data_cours['score'] = calcul_similarite
 resultats_tri = data_cours.sort_values(by='score', ascending=False)
 
 print("\n==================================================")
-print("🎯 COURS RECOMMANDES POUR VOUS :")
+print(" COURS RECOMMANDES POUR VOUS :")
 print("==================================================")
 
 trouve = False
 for index, ligne in resultats_tri.iterrows():
     # Affichage des cours qui ont une correspondance (> 0)
     if ligne['score'] > 0:
-        print(f"⭐ {ligne['nom']}")
+        print(f" {ligne['nom']}")
         print(f"   ↳ Taux de correspondance: {ligne['score']*100:.1f}%")
         print(f"   ↳ Tags: {ligne['keywords']}\n")
         trouve = True
@@ -63,5 +61,4 @@ for index, ligne in resultats_tri.iterrows():
 if not trouve:
     print("🤖 Aucun resultat exact trouve.")
     print("   Voici le cours le plus populaire actuellement:")
-    print(f"   🔥 {data_cours.iloc[0]['nom']} (Recommandation generale)")
-print("==================================================")
+    print(f"    {data_cours.iloc[0]['nom']} (Recommandation generale)")
